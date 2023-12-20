@@ -79,7 +79,7 @@
 <body>
 
     <?php
-    function saveFormDataToFile($data)
+    function saveTextData($data)
     {
         $file = fopen("data.txt", "a");
         fwrite($file, implode(",", $data) . PHP_EOL);
@@ -112,7 +112,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
         $formData = [$name, $email, password_hash($password, PASSWORD_DEFAULT)];
-        saveFormDataToFile($formData);
+        saveTextData($formData);
         echo '<p>Data has been saved successfully!</p>';
     }
     ?>

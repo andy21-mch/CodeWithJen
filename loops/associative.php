@@ -66,34 +66,3 @@ function getUsers(){
     $users = User::all();
     return $users;
 }
-
-
-
-/*
-
-- upload the image
-- delete old image
-- update database new image name
-
-
-
-*/
-
-function imageUpload(){
-    // 
-    return true;
-}
-function deleteOldImage(){}
-
-function updateDb(){}
-
-
-// get the image from the form
-// check if image exist in your storage
-        deleteOldImage();
-    imageUpload();
-
-    if(imageUpload()){
-        updateDb();
-    }
-   
