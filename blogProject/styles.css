@@ -1,0 +1,16 @@
+body {
+    padding-top: 56px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+/* Add your custom styles here */
