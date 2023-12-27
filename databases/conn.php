@@ -45,5 +45,20 @@ function executeQuery($conn, $sql)
 }
 
 
+function getUsers($conn)
+{
+    $users = [];
+    $sql = "SELECT * FROM Students";
+    $result = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $users[] = $row;
+        }
+    }
+
+    return $users;
+
+}
 
 $conn = connect($host, $username, $password, $databse);
