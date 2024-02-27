@@ -60,6 +60,7 @@ include "conn.php";
                 <th>Gender</th>
                 <th>Registration Date</th>
                 <th>Country</th>
+                <th>Action</th>
             </tr>
         </thead>
     </table>
@@ -67,6 +68,7 @@ include "conn.php";
         <table id="table_scroll" border="0">
             <tbody>
                 <?php
+
                 foreach ($users as $user) {
                     ?>
                     <tr>
@@ -85,7 +87,11 @@ include "conn.php";
                         </td>
 
                         <td>
+                            
                             <?= $user['country'] ?>
+                        </td>
+                        <td>
+                            <a href="user.php?id=<?= $user['id'] ?>">View</a>
                         </td>
                     </tr>
                     <?php

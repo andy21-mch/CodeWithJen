@@ -55,16 +55,19 @@ include_once "conn.php";
 
         $datetime = $date . ' ' . $time;
 
+        addUser($name, $email, $country, $gender, $datetime, $conn);
 
-        $sqlInsertData = "INSERT INTO Students 
-        (full_names, country, email, Gender, reg_date)
-        VALUES 
-        ('$name','$country','$email', '$gender', '$datetime')";
+        echo "User added by prepared statement";
+
+        // $sqlInsertData = "INSERT INTO Students 
+        // (full_names, country, email, Gender, reg_date)
+        // VALUES 
+        // ('$name','$country','$email', '$gender', '$datetime')";
 
        
-        if (executeQuery($conn, $sqlInsertData)) {
-            echo "Data inserted successfully";
-        }
+        // if (executeQuery($conn, $sqlInsertData)) {
+        //     echo "Data inserted successfully";
+        // }
 
 
     }
