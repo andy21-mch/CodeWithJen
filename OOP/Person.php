@@ -19,6 +19,8 @@ class Person {
 }
 
 
+
+
 $Jenniffer = new Person();
 $Jenniffer->name = "Jenniffer";
 $Jenniffer->walk();
