@@ -3,7 +3,7 @@
 
 class Animal
 {
-    protected $name;
+    public $name;
 
     public function __construct($animalName){
         $this->name = $animalName;
@@ -13,8 +13,5 @@ class Animal
         echo "$this->name Default sound";
     }
 
-    // public function setName($name){
-    //     $this->name = $name;
-    // }
 
 }
