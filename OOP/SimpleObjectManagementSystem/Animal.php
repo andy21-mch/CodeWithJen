@@ -69,27 +69,11 @@ class Animal
 
     public function getAllObjects($fileName)
     {
-        $objects = [];
 
-        if(file_exists($fileName)){
+        if (file_exists($fileName)) {
             $json = file_get_contents($fileName);
             $data = json_decode($json);
-
-            if(is_array($data)){
-                foreach($data as $item){
-                    $animal = new Animal();
-                    $animal->setName($item['name']);
-                    $animal->setType($item['type']);
-                    $animal->setAge($item['age']);
-                    $objects[] = $animal;
-
-                }
-            }
-
-            return $objects;
-
+            return $data;
         }
-        return [];
-
     }
 }

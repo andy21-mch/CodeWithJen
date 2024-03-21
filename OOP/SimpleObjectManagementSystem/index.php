@@ -15,7 +15,18 @@
 </style>
 
 <body>
+
+
+
     <div class="container m-auto w-50 p-5 mt-5">
+        <ul style="color: red">
+            <li>This already works, Just add
+                <ul>
+                    <li>a save2 method that saves the data to a database, </li>
+                    <li>A getAllObjects2 metho that gets the data from database</li>
+                </ul>
+            </li>
+        </ul>
         <h1 class="text-center">Animal Form</h1>
 
         <form method="POST" action="" class="p-5">
@@ -41,13 +52,13 @@
         </form>
 
         <?php
+        include "Animal.php";
 
         if (isset ($_POST['save'])) {
             $name = $_POST['name'];
             $type = $_POST['type'];
             $age = $_POST['age'];
 
-            include "Animal.php";
 
             $animal = new Animal();
 
@@ -60,14 +71,11 @@
 
         $animal = new Animal();
         $animals = $animal->getAllObjects('animal.json');
-        var_dump($animals);
+
 
         ?>
 
 
-<ul>
-    <li>Please update this method</li>
-</ul>
 
         <table class="table table-bordered">
 
@@ -78,16 +86,22 @@
             </thead>
 
             <tbody>
-                <?php 
+                <?php
 
-                foreach ($animals as $animal){
+                foreach ($animals as $animal) {
                     ?>
                     <tr>
-                        <td><?php echo $animal->name ?></td>
-                        <td><?php echo $animal->type?></td>
-                        <td><?php echo $animal->age ?></td>
+                        <td>
+                            <?php echo $animal->name ?>
+                        </td>
+                        <td>
+                            <?php echo $animal->type ?>
+                        </td>
+                        <td>
+                            <?php echo $animal->age ?>
+                        </td>
                     </tr>
-               <?php } ?>
+                <?php } ?>
 
             </tbody>
 
