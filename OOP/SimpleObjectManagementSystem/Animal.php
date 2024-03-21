@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Animal {
+class Animal
+{
     private $name;
 
     private $type;
@@ -8,42 +9,87 @@ class Animal {
     private $age;
 
     // define the getters
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getType(){
+    public function getType()
+    {
         return $this->type;
     }
 
-    public function getAge(){
+    public function getAge()
+    {
         return $this->age;
     }
 
     // define the setters
 
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function setType($type){
+    public function setType($type)
+    {
         $this->type = $type;
     }
 
-    public function setAge($age){
+    public function setAge($age)
+    {
         $this->age = $age;
     }
 
-    public function save($fileName){
+    public function save($fileName)
+    {
         $data = [
             'name' => $this->name,
             'type' => $this->type,
-            'age'=> $this->age,
+            'age' => $this->age,
         ];
 
-        $jsonData = json_encode($data).PHP_EOL;
+        $jsonData = json_encode($data);
+        if (file_exists($fileName)) {
+            $existingData = file_get_contents($fileName);
 
-        file_put_contents($fileName, $jsonData, FILE_APPEND);
+            // Decode the existing data to an array
+            $dataArray = json_decode($existingData, true);
+
+            $dataArray[] = $data;
+
+            $jsonData = json_encode($dataArray);
+        } else {
+
+            $jsonData = json_encode([$data]);
+        }
+
+        file_put_contents($fileName, $jsonData . PHP_EOL);
     }
 
+    public function getAllObjects($fileName)
+    {
+        $objects = [];
+
+        if(file_exists($fileName)){
+            $json = file_get_contents($fileName);
+            $data = json_decode($json);
+
+            if(is_array($data)){
+                foreach($data as $item){
+                    $animal = new Animal();
+                    $animal->setName($item['name']);
+                    $animal->setType($item['type']);
+                    $animal->setAge($item['age']);
+                    $objects[] = $animal;
+
+                }
+            }
+
+            return $objects;
+
+        }
+        return [];
+
+    }
 }
